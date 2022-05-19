@@ -7,12 +7,19 @@ import { SharedService } from '../shared.service';
   styleUrls: ['./sibiling1.component.css']
 })
 export class Sibiling1Component implements OnInit {
-
+  showMe:boolean=true;
+  hideMe:boolean=false;
   constructor(private sharedService:SharedService) { }
 
   ngOnInit(): void {
   }
 clickMe(){
 this.sharedService.sendClickEvent();
+this.hideMe=!this.hideMe;
+this.showMe=!this.showMe;
+}
+reduceMe(){
+  this.showMe=!this.showMe;
+  this.hideMe=!this.hideMe;
 }
 }
