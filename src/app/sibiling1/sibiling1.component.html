@@ -1,21 +1,19 @@
 <div class="container">
+  <app-sibiling2 [offline]="offline" [online]="online"></app-sibiling2>
   <div class="row">
-    <div class="col-md-3">
-      <div class="card">
-        <img src="../assets/images/Everest.jpg" alt="Everst Technologies" class="card-img-top">
+    <div class="col-md-3 mb-4" *ngFor="let card of cards;let i = index">
+      <div class="card" [ngClass]="{'bg-danger': !card.online,'bg-success': card.online}" > 
+        <img src="{{card.img}}" alt="Everst Technologies" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title"> Everest Technologies</h5>
-          <p class="card-text">Attended the interview, task is given by interviewer</p>
+          <h5 class="card-title">{{card.title}}</h5>
+          <p class="card-text">{{card.desc}}</p>
           <div class="col-md-12 text-center">
-          <button type="button" *ngIf="showMe else elseBlock" (click)="clickMe()" class="btn btn-primary">Add</button>&nbsp;
-        <ng-template #elseBlock>
-          <button type="button" *ngIf="hideMe" (click)="reduceMe()" class="btn btn-primary">Reduce</button>
-        </ng-template>
+          <button type="button" (click)="clickMe(i)" class="btn btn-dark rounded-0 shadow-lg">{{card.button}}</button>&nbsp;
         </div>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
       <div class="card">
         <img src="../assets/images/Everest.jpg" alt="Everst Technologies" class="card-img-top">
         <div class="card-body">
@@ -120,7 +118,6 @@
           </div>
         </div>
       </div>
-    </div>
-
+    </div> -->
   </div>
 </div>

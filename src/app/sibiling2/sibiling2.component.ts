@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SharedService } from '../shared.service';
 @Component({
@@ -7,17 +7,13 @@ import { SharedService } from '../shared.service';
   styleUrls: ['./sibiling2.component.css']
 })
 export class Sibiling2Component implements OnInit {
-clickEventSubscription:Subscription;
   constructor(private sharedService:SharedService) { 
-  this.clickEventSubscription=this.sharedService.getClickEvent().subscribe(()=>{
-    this.incrementCount();
-  })
+ 
 }
   ngOnInit(): void {
   }
+  @Input() online = 0;
+  @Input() offline = 0;
   count:number=0;
-incrementCount(){
-this.count++;
-}
-countminus=0;
+
 }
